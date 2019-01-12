@@ -1,10 +1,11 @@
+#![allow(unused_unsafe)]
 extern crate libc;
 
 use libc::{int16_t, size_t};
 use std::mem;
 
 #[no_mangle]
-pub extern fn counter_generate(size: size_t, vec: *mut *mut int16_t) -> size_t {
+pub unsafe extern fn counter_generate(size: size_t, vec: *mut *mut int16_t) -> size_t {
     let mut counted: Vec<_> = (0..).take(size).collect();
 
     counted.shrink_to_fit();
@@ -16,7 +17,7 @@ pub extern fn counter_generate(size: size_t, vec: *mut *mut int16_t) -> size_t {
 }
 
 #[no_mangle]
-pub extern fn counter_free(arr: *mut int16_t, size: size_t) {
+pub unsafe extern fn counter_free(arr: *mut int16_t, size: size_t) {
     unsafe {
         if arr.is_null() {
             return;

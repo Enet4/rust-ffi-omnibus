@@ -1,3 +1,4 @@
+#![allow(unused_unsafe)]
 extern crate libc;
 
 use libc::{c_char, uint8_t};
@@ -15,7 +16,7 @@ pub extern fn theme_song_generate(length: uint8_t) -> *mut c_char {
 }
 
 #[no_mangle]
-pub extern fn theme_song_free(s: *mut c_char) {
+pub unsafe extern fn theme_song_free(s: *mut c_char) {
     unsafe {
         if s.is_null() { return }
         CString::from_raw(s)

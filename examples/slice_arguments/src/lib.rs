@@ -1,10 +1,11 @@
+#![allow(unused_unsafe)]
 extern crate libc;
 
 use libc::{uint32_t, size_t};
 use std::slice;
 
 #[no_mangle]
-pub extern fn sum_of_even(n: *const uint32_t, len: size_t) -> uint32_t {
+pub unsafe extern fn sum_of_even(n: *const uint32_t, len: size_t) -> uint32_t {
     let numbers = unsafe {
         assert!(!n.is_null());
 

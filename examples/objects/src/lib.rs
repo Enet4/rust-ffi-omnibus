@@ -1,3 +1,4 @@
+#![allow(unused_unsafe)]
 extern crate libc;
 
 use libc::{c_char, uint32_t};
@@ -28,18 +29,18 @@ impl ZipCodeDatabase {
 }
 
 #[no_mangle]
-pub extern fn zip_code_database_new() -> *mut ZipCodeDatabase {
+pub unsafe extern fn zip_code_database_new() -> *mut ZipCodeDatabase {
     Box::into_raw(Box::new(ZipCodeDatabase::new()))
 }
 
 #[no_mangle]
-pub extern fn zip_code_database_free(ptr: *mut ZipCodeDatabase) {
+pub unsafe extern fn zip_code_database_free(ptr: *mut ZipCodeDatabase) {
     if ptr.is_null() { return }
     unsafe { Box::from_raw(ptr); }
 }
 
 #[no_mangle]
-pub extern fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
+pub unsafe extern fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
     let database = unsafe {
         assert!(!ptr.is_null());
         &mut *ptr
@@ -48,7 +49,7 @@ pub extern fn zip_code_database_populate(ptr: *mut ZipCodeDatabase) {
 }
 
 #[no_mangle]
-pub extern fn zip_code_database_population_of(ptr: *const ZipCodeDatabase, zip: *const c_char) -> uint32_t {
+pub unsafe extern fn zip_code_database_population_of(ptr: *const ZipCodeDatabase, zip: *const c_char) -> uint32_t {
     let database = unsafe {
         assert!(!ptr.is_null());
         &*ptr
