@@ -69,6 +69,13 @@ All Julia examples will use Julia 1.0, and rely on the language's
 built-in [C function calling capabilities][julia-c]. They might also
 work on v0.7, but this version is untested.
 
+## Java
+
+All Java examples will use the [Java Native Access][jna] (JNA)
+library, and will be built and run with OpenJDK 8. They might also
+work on the Oracle JDK and more recent Java versions, but this is
+untested.
+
 ## Running Examples
 
 When running examples, you need to ensure the Rust dynamic library
@@ -98,3 +105,4 @@ installed.
 [ctypes]: https://docs.python.org/3/library/ctypes.html
 [node-ffi]: https://www.npmjs.com/package/node-ffi
 [julia-c]: https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code
+[jna]: https://github.com/java-native-access/jna

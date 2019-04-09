@@ -14,7 +14,7 @@ enhancements, so it is only right to share how awesome they are.
 - [Zbigniew Siciarz] (node.js)
 - [llogiq] (Typos)
 - [masklinn] (Typos, Section Collapsing)
-- [Eduardo Pinho] (Julia)
+- [Eduardo Pinho] (Julia, Java)
 
 [Daniel Keep]: https://github.com/DanielKeep
 [Getty Ritter]: https://github.com/aisamanra
